@@ -1,0 +1,22 @@
+<article class="container-fluid">
+    <h2>{{fruit.name}}</h2>
+    <img [src]="fruit.sampleImage">
+    <div class="d-flex justify-content-start">
+        <select [(ngModel)]="selectedPortion">
+            <option *ngFor="let p of fruit.price">{{p}}</option>
+        </select>
+        <button (click)="addToCart()" class="btn btn-dark">Add to cart</button>
+    </div>
+    <aside *ngIf="fruit.foodValue">
+        <h6>Fruit value</h6>
+        <p>Calorie: {{fruit.foodValue.calorie}}</p>
+        <p>Fat: {{fruit.foodValue.fat}}</p>
+        <p>Carbs: {{fruit.foodValue.carbohydrates}}</p>
+        <p>Fiber: {{fruit.foodValue.fiber}}</p>
+        <p>Protien: {{fruit.foodValue.protien}}</p>
+        <p>Suger: {{fruit.foodValue.suger}}</p>
+    </aside>
+    <aside *ngIf="fruit.seller">
+        <h6>Seller: {{fruit.seller}}</h6>
+    </aside>
+</article>

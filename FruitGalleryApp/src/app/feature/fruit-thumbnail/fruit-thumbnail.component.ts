@@ -19,6 +19,6 @@ export class FruitThumbnailComponent implements OnInit {
   }
 
   showDetails(id: number) {
-    this.router.navigate([{ outlets: { galleryOutlet: 'detail/' + id } }]);
+    this.router.navigate([{ outlets: { galleryOutlet: ['detail', id] } }]);
   }
 }
