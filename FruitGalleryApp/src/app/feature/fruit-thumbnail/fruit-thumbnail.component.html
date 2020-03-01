@@ -1,0 +1,15 @@
+<ng-container *ngIf="allFruits">
+    <article class="d-flex justify-content-around">
+        <section *ngFor="let fruit of allFruits" class="thumbnail">
+            <a href="javascript:void(0)" (click)="showDetails(fruit.id)">
+                <img [src]="fruit.sampleImage">
+                <h6>{{fruit.name}}</h6>
+            </a>
+            <span>Price
+                <select>
+                    <option *ngFor="let p of fruit.price">{{p}}</option>
+                </select>
+            </span>
+        </section>
+    </article>
+</ng-container>
