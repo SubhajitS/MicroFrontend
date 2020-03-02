@@ -21,8 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.router.navigate([{ outlets: { galleryOutlet: 'gallery' } }]);
 
-    this.subscriptions.push(this.kartService.kartItems.subscribe(x =>{
-      if(x) {
+    this.subscriptions.push(this.kartService.kartItems.subscribe(x => {
+      if (x) {
         console.log(x);
         this.kartChanged.emit(x);
       }
