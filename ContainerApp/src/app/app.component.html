@@ -1,1 +1,7 @@
-<fruit-gallery (kartChanged)="kartChangedListener($event)"></fruit-gallery>
+<nav class="d-flex bd-highlight align-items-center">
+    <h3 class="col-lg-10">FruitKart</h3>
+    <span class="col-lg-2">KartItemCount: {{itemCount}}</span>
+</nav>
+<article class="container-fluid">
+    <fruit-gallery (kartChanged)="kartChangedListener($event)"></fruit-gallery>
+</article>
