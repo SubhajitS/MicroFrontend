@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { take, mergeMap } from 'rxjs/operators';
 import { Fruit } from 'src/app/fruit';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { KartService } from 'src/app/kart.service';
 import { KartItem } from 'src/app/kartItem';
 
@@ -15,7 +15,10 @@ export class FruitDetailComponent implements OnInit {
 
   fruit: Fruit;
   selectedPortion: string;
-  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private kartService: KartService) { }
+  constructor(private dataService: DataService,
+    private activatedRoute: ActivatedRoute,
+    private kartService: KartService,
+    private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.pipe(mergeMap(x =>
@@ -26,5 +29,9 @@ export class FruitDetailComponent implements OnInit {
   addToCart() {
     const item: KartItem = { fruitId: this.fruit.id, count: 1, portion: this.selectedPortion };
     this.kartService.addItemToKart(item);
+  }
+
+  backToGallery() {
+    this.router.navigate([{ outlets: { galleryOutlet: 'gallery' }}]);
   }
 }

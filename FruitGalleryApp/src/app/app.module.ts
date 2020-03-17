@@ -21,8 +21,12 @@ import { FruitDetailModule } from './feature/fruit-detail/fruit-detail.module';
   entryComponents: [AppComponent]
 })
 export class AppModule {
-  constructor(injector: Injector) {
-    const galleryComponent = createCustomElement(AppComponent, {injector});
-    customElements.define('fruit-gallery', galleryComponent);
+  galleryComponent: any;
+  constructor(private injector: Injector) {
+    this.galleryComponent = createCustomElement(AppComponent, { injector });
+  }
+
+  ngDoBootstrap() {
+    customElements.define('fruit-gallery', this.galleryComponent);
   }
 }

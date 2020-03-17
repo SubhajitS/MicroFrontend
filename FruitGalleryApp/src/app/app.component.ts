@@ -23,7 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(this.kartService.kartItems.subscribe(x => {
       if (x) {
-        console.log(x);
         this.kartChanged.emit(x);
       }
     }));
