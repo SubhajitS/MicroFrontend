@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 
 declare function linkAppAssets(): any;
 
@@ -7,12 +7,24 @@ declare function linkAppAssets(): any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
 
   itemCount: number = 0;
 
+  constructor(private zone: NgZone) { }
+
   ngOnInit() {
-    linkAppAssets();
+    console.log('App comp');
+    setTimeout(() => {
+      this.zone.runOutsideAngular(() => {
+
+        linkAppAssets();
+      });
+    }, 3000);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
 
   kartChangedListener(event: CustomEvent) {

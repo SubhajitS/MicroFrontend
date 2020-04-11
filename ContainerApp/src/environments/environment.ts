@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  linkerPath: './assets/linker.js'
+  linkerPath: './assets/js/linker.js'
 };
 
 /*

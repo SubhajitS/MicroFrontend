@@ -17,16 +17,14 @@ import { FruitDetailModule } from './feature/fruit-detail/fruit-detail.module';
     FruitDetailModule
   ],
   providers: [],
-  bootstrap: [],
   entryComponents: [AppComponent]
 })
 export class AppModule {
-  galleryComponent: any;
-  constructor(private injector: Injector) {
-    this.galleryComponent = createCustomElement(AppComponent, { injector });
-  }
+
+  constructor(private injector: Injector) { }
 
   ngDoBootstrap() {
-    customElements.define('fruit-gallery', this.galleryComponent);
+    const galleryComponent = createCustomElement(AppComponent, { injector: this.injector });
+    customElements.define('fruit-gallery', galleryComponent);
   }
 }
