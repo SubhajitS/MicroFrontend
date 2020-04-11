@@ -11,6 +11,6 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-// const appLinkerScript = document.createElement('script');
-// appLinkerScript.setAttribute('src', environment.linkerPath);
-// document.body.appendChild(appLinkerScript);
+const appLinkerScript = document.createElement('script');
+appLinkerScript.setAttribute('src', environment.linkerPath);
+document.body.appendChild(appLinkerScript);
