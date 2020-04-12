@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
-declare function linkAppAssets(): any;
+declare function linkAppAssets(appName: string, cb: (directive: string) => void): any;
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,7 @@ declare function linkAppAssets(): any;
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
+  appName = 'testapp';
   itemCount = 0;
 
   constructor() { }
@@ -17,7 +18,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    linkAppAssets();
+    linkAppAssets(this.appName, (directive: string) => {
+      console.log(directive);
+    });
   }
 
   kartChangedListener(event: CustomEvent) {
